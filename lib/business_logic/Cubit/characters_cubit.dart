@@ -7,7 +7,7 @@ part 'characters_state.dart';
 
 class CharactersCubit extends Cubit<CharactersState>{
    final CharactersRepsitory characterRepsitory ;
- late  List<Character> characters;
+   List<Character> characters = [];
   CharactersCubit({required this.characterRepsitory}): super (CharactersInitial());
     List<Character> getAllCharacters(){
       characterRepsitory.getAllCharacters().then((characters){

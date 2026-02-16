@@ -3,7 +3,7 @@ import 'package:flutter_breaking/constants/strings.dart';
 
 class CharactersWebServices {
   late Dio dio;
-
+   
   CharactersWebServices() {
     BaseOptions options = BaseOptions(
       baseUrl: baseUrl,
@@ -15,14 +15,15 @@ class CharactersWebServices {
     dio = Dio(options);
   }
 
-  Future<List<dynamic>> getAllCharacters() async {
-    try {
-      Response response = await dio.get('characters');
-      print(response.data.toString());
-      return response.data;
-    } catch (e) {
-      print(e.toString());
-      return [];
-    }
+  Future<Map<String, dynamic>> getAllCharacters() async {
+  try {
+    Response response = await dio.get('character/');
+    print(response.data.toString());
+
+    return response.data; // this is MAP
+  } catch (e) {
+    print(e.toString());
+    return {};
   }
+}
 }

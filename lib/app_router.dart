@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_breaking/business_logic/Cubit/characters_cubit.dart';
+import 'package:flutter_breaking/data/models/characters.dart';
 import 'package:flutter_breaking/data/repository/character_repository.dart';
 import 'package:flutter_breaking/data/web_services/characters_web_services.dart';
-import 'package:flutter_breaking/presentation/screens/character_Details.dart';
+import 'package:flutter_breaking/presentation/screens/character_Details_screen.dart';
 import 'package:flutter_breaking/presentation/screens/characters_screen.dart';
 import 'constants/strings.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +26,8 @@ switch(settings.name){
     ), 
     );
   case characterDetailsScreen :
-  return MaterialPageRoute(builder: (_) => CharacterDetailsScreen() );
+  final  character  = settings.arguments as Character;
+  return MaterialPageRoute(builder: (_) => CharacterDetailsScreen(character : character)) ;
   
 }
 

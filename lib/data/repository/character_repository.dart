@@ -10,10 +10,11 @@ class CharactersRepsitory{
   Future<List<Character>> getAllCharacters() async {
     final data = await charactersWebServices.getAllCharacters();
 
-    List characters = data['results'];
-
-    List<Character> charactersList =
+    List characters = data['results'] ?? [];
+      
+    List <Character> charactersList =
         characters.map((e) => Character.formJson(e)).toList();
+
 
     return charactersList;
   }

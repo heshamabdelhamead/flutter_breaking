@@ -46,12 +46,12 @@ class CharacterDetailsScreen extends StatelessWidget {
       ),
     );
   }
-  Widget buildDivider(double endIndent){
+
+  Widget buildDivider(double endIndent) {
     return Divider(
       color: MyColors.myYellow,
-      endIndent:endIndent ,
+      endIndent: endIndent,
       thickness: 2,
-
     );
   }
 
@@ -71,17 +71,20 @@ class CharacterDetailsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    characterInfo('gender : ' ,character.gender), buildDivider(305),
-                     characterInfo('status : ' ,character.ifDiedOrAlive), buildDivider(300),
-                       characterInfo('species : ' ,character.species), buildDivider(250),
-                       characterInfo('created : ' ,character.created), buildDivider(100),
-                       SizedBox(height: 20,)
-                    ],
-                  
+                    characterInfo('gender : ', character.gender),
+                    buildDivider(305),
+                    characterInfo('status : ', character.ifDiedOrAlive),
+                    buildDivider(300),
+                    characterInfo('species : ', character.species),
+                    buildDivider(250),
+                    characterInfo('created : ', character.created),
+                    buildDivider(100),
+                    SizedBox(height: 20),
+                  ],
                 ),
               ),
-             //  SizedBox(height: 7,)
-             // Spacer()
+              //  SizedBox(height: 7,)
+              // Spacer()
             ]),
           ),
         ],

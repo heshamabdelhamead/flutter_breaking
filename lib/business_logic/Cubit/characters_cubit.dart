@@ -6,16 +6,15 @@ import 'package:meta/meta.dart';
 part 'characters_state.dart';
 
 class CharactersCubit extends Cubit<CharactersState>{
+
    final CharactersRepsitory characterRepsitory ;
-   List<Character> characters = [];
+   
   CharactersCubit({required this.characterRepsitory}): super (CharactersInitial());
-    List<Character> getAllCharacters(){
+    void getAllCharacters(){
       characterRepsitory.getAllCharacters().then((characters){
         emit(CharatersLoaded(characters));
-        this.characters = characters;
 
       });
-      return  characters;
     }
 
 }

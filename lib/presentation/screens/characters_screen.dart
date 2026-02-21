@@ -5,6 +5,7 @@ import 'package:flutter_breaking/constants/my_colors.dart';
 import 'package:flutter_breaking/data/models/characters.dart';
 import 'package:flutter_breaking/data/repository/character_repository.dart';
 import 'package:flutter_breaking/presentation/widgets/character_item.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 
 class CharactersScreen extends StatefulWidget {
@@ -133,6 +134,18 @@ itemBuilder: (context, index) {
 Widget _builtAppBarTitile(){
   return Text("Characters",style: TextStyle(color: MyColors.myGray));
 }
+Widget thereNoInternet(){
+  return Center(
+    child: Column(
+      spacing: 40,
+      mainAxisAlignment: .center,
+    children: [Icon(Icons.signal_wifi_connected_no_internet_4,),
+    Text("you need to check your internet connection",style:TextStyle(color:Colors.red), ),
+    ],
+    
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +154,24 @@ Widget _builtAppBarTitile(){
       title: _isSearching ? _buildSearchField() : _builtAppBarTitile() ,
       actions:  _buildAppBarActions(),
       ),
-      body: builtBlocWidget(),
+      body: OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
+          List<ConnectivityResult> connectivity,
+          Widget child,
+        ){
+         
+          final bool connected = !connectivity.contains(ConnectivityResult.none);
+          if(connected)  {
+            return builtBlocWidget() ;
+
+          }else{
+           return child;
+          }
+
+        },
+        child: thereNoInternet())
+     //  builtBlocWidget(),
 
     );
     
